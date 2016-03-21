@@ -1,5 +1,5 @@
 # Nominatim-API
-Java library for reverse geocoding for Nominatim nominatim.openstreetmap.org
+Java library for reverse geocoding for Nominatim [nominatim.openstreetmap.org](https://nominatim.openstreetmap.org/)
 
 ## Maven Dependency
 ```
