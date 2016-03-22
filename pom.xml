@@ -6,7 +6,7 @@
     <groupId>me.atlis</groupId>
     <artifactId>nominatim-api</artifactId>
 
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
 
     <name>Nominatim-API</name>
@@ -27,7 +27,7 @@
         <connection>scm:git://git@github.com:AtlisInc/Nominatim-API.git</connection>
         <developerConnection>scm:git:git@github.com:AtlisInc/Nominatim-API.git</developerConnection>
         <url>http://github.com/AtlisInc/Nominatim-API</url>
-        <tag>HEAD</tag>
+        <tag>nominatim-api-1.0.1</tag>
     </scm>
 
     <properties>
