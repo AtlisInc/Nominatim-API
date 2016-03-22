@@ -27,7 +27,7 @@
         <connection>scm:git://git@github.com:AtlisInc/Nominatim-API.git</connection>
         <developerConnection>scm:git:git@github.com:AtlisInc/Nominatim-API.git</developerConnection>
         <url>http://github.com/AtlisInc/Nominatim-API</url>
-        <tag>nominatim-api-1.0.1</tag>
+        <tag>nominatim-api-1.0.0</tag>
     </scm>
 
     <properties>
