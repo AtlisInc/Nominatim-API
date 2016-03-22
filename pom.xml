@@ -202,11 +202,6 @@
             <version>RELEASE</version>
         </dependency>
         <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>RELEASE</version>
-        </dependency>
-        <dependency>
             <groupId>me.atlis</groupId>
             <artifactId>atlis-location-base</artifactId>
             <version>RELEASE</version>
