@@ -7,10 +7,7 @@ package com.atlis.panoramio.test;
  */
 import com.atlis.location.model.impl.Address;
 import com.atlis.location.model.impl.MapPoint;
-import com.atlis.location.model.impl.MapRegion;
 import com.atlis.location.nominatim.NominatimAPI;
-import java.util.Arrays;
-import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
