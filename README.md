@@ -12,18 +12,23 @@ Java library for reverse geocoding using Nominatim API [nominatim.openstreetmap.
 
 ## Usage
 
-Very simple.
+You can use both geocoding and reverse geocoding using this library.
 
+### Reverse Geocoding
+```
+Address address = new Address();
+address.setCity("New York");
+MapPoint mapPoint = NominatimAPI.with(endpointUrl).getMapPointFromAddress(address, 5);
+```
+### Geocoding
 ```
 Double latitude = 40.7470;
 Double longitude = -73.9860;
-Double radius = 5.0;
-MapRegion mapRegion = new MapRegion().buildMapRegion(latitude, longitude, radius);
-PanoramioImages panoramioImages = PanoramioAPI.with().getImagesForLocation(Arrays.asList(mapRegion));
-List<PanoramioImage> images = panoramioImages.getPhotos();
+MapPoint mapPoint = new MapPoint().buildMapPoint(latitude, longitude);
+Address address = NominatimAPI.with(endpointUrl).getAddressFromMapPoint(mapPoint);
 ```
 
-PanoramioAPI is thread safe singleton.
+NominatimAPI is thread safe singleton. ```String endpointUrl = "http://nominatim.openstreetmap.org/"``` for example.
 
 ## Dependencies
 
