@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.atlis.location.nominatim;
 
 import com.atlis.location.model.impl.Address;
@@ -177,7 +172,7 @@ public class NominatimAPI {
         if (address != null) {
             //we have country, state, city, street and house number - 5 degress of precision
             int precision = address.getPrecision();
-            //let's check max level of precision 
+            //let's check max level of precision
             int maxPrecision = getMaxLevelOfPrecision(address);
             if (address.getPrecision() > maxPrecision) {
                 precision = maxPrecision;
@@ -264,4 +259,13 @@ public class NominatimAPI {
         return stringBuilder != null ? stringBuilder.toString() : "";
     }
 
+    /**
+     * Overrides default accept language. Languages at:
+     * http://wiki.openstreetmap.org/wiki/Nominatim/Country_Codes
+     *
+     * @param language
+     */
+    public void setAcceptLanguage(String language) {
+        atlisOpenStreetMapWrapperQueryParams.put(URL_ACCEPT_LANGUAGE_PARAMETER, language);
+    }
 }
