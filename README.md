@@ -28,7 +28,7 @@ MapPoint mapPoint = new MapPoint().buildMapPoint(latitude, longitude);
 Address address = NominatimAPI.with(endpointUrl).getAddressFromMapPoint(mapPoint);
 ```
 
-NominatimAPI is thread safe singleton. ```String endpointUrl = "http://nominatim.openstreetmap.org/"``` for example.
+NominatimAPI is thread safe singleton. ```String endpointUrl = "https://nominatim.openstreetmap.org/"``` for example.
 
 ## Dependencies
 
