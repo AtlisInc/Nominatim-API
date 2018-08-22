@@ -6,11 +6,19 @@ import com.atlis.location.nominatim.model.OpenStreetMapResponse;
 import com.atlis.location.utils.HttpUtlis;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+
+import java.io.*;
+import java.net.*;
+import java.security.cert.Certificate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javafx.util.Pair;
 import org.apache.log4j.Logger;
+
+import javax.net.ssl.HttpsURLConnection;
+import javax.net.ssl.SSLPeerUnverifiedException;
+import javax.net.ssl.SSLSocketFactory;
 
 /**
  *
@@ -97,7 +105,16 @@ public class NominatimAPI {
     private Pair<String, String> getOpenStreetMap(MapPoint mapPoint, Address address, String urlSuffix) {
         String urlWithLatLon = getOSMUrl(atlisOpenStreetMapWrapperEndpoint + HttpUtlis.URL_DELIMETER + urlSuffix, atlisOpenStreetMapWrapperQueryParams, mapPoint, address);
         logger.debug("Open street map request url: " + urlWithLatLon);
-        String responseStr = httpUtlis.getHttpCallAsString(httpUtlis.getURL(urlWithLatLon));
+        String responseStr;
+        try {
+            HttpsURLConnection connection = (HttpsURLConnection) new URL(urlWithLatLon).openConnection();
+            connection.setRequestProperty("User-Agent", "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.95 Safari/537.11");
+
+            responseStr = new BufferedReader(new InputStreamReader(connection.getInputStream())).readLine();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         logger.debug("Open street map response: " + responseStr);
         return new Pair(urlWithLatLon, responseStr);
     }
@@ -181,7 +198,8 @@ public class NominatimAPI {
             address.setPrecision(precision);
             staticParamsForQuery.put(URL_SEARCE_QUERY, buildStringQueryForPrecisionLevel(address));
         }
-        return httpUtlis.createURLWithGetParams(endpoint, staticParamsForQuery, false);
+        return httpUtlis.createURLWithGetParams(endpoint, staticParamsForQuery, false)
+                .replace("http://", "https://");
     }
 
     private int getMaxLevelOfPrecision(Address address) {
