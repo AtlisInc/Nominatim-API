@@ -12,7 +12,7 @@ Java library for reverse geocoding using Nominatim API [nominatim.openstreetmap.
 
 ## Usage
 
-You can use both geocoding and reverse geocoding using this library.
+You can use both geocoding and reverse geocoding using this library..
 
 ### Reverse Geocoding
 ```
